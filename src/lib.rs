@@ -86,6 +86,7 @@ pub struct Metronome {
 impl Metronome {
     #[wasm_bindgen(constructor)]
     pub fn new() -> Result<Metronome, JsValue> {
+        console_error_panic_hook::set_once();
         let ctx = AudioContext::new()?;
         Ok(Self {
             ctx,
