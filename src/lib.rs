@@ -38,7 +38,6 @@ pub struct Stats {
 }
 
 impl Stats {
-
     fn inc_bar(&mut self) {
         self.bar_count += 1;
         self.total_bar_count += 1;
@@ -79,7 +78,7 @@ pub struct Metronome {
     scheduled_upto: f64,
     pub stats: Stats,
     // Hooks/Callbacks
-    on_ended: Option<Function>
+    on_ended: Option<Function>,
 }
 
 #[wasm_bindgen]
@@ -132,9 +131,9 @@ impl Metronome {
     pub fn schedule(&mut self) -> Result<(), MetronomeError> {
         let schedule_ahead_interval =
             self.schedule_ahead_interval
-            .ok_or(MetronomeError::Uninitialized(
-                "schedule_ahead_interval".to_string(),
-            ))?;
+                .ok_or(MetronomeError::Uninitialized(
+                    "schedule_ahead_interval".to_string(),
+                ))?;
         if self.ctx.current_time() + schedule_ahead_interval > self.scheduled_upto {
             let num_beats = self
                 .num_beats
@@ -204,6 +203,3 @@ impl Metronome {
         Ok(())
     }
 }
-
-
-
