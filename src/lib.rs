@@ -103,7 +103,6 @@ impl Metronome {
         })
     }
 
-    #[wasm_bindgen]
     pub fn set_tempo(mut self, bpm: u16) -> Self {
         self.bpm.replace(bpm);
         let beat_interval = 60_f64 / bpm as f64;
@@ -112,7 +111,6 @@ impl Metronome {
         self
     }
 
-    #[wasm_bindgen]
     pub fn set_time_signature(mut self, num_beats: u8, note_len: u8) -> Self {
         self.num_beats.replace(num_beats);
         self.note_len.replace(note_len);
@@ -124,7 +122,6 @@ impl Metronome {
         self
     }
 
-    #[wasm_bindgen]
     pub fn reset(mut self) -> Self {
         self.scheduled_upto = self.ctx.current_time();
         self.stats.reset();
@@ -132,7 +129,6 @@ impl Metronome {
     }
 
     /// Schedule clicks for the next bar
-    #[wasm_bindgen]
     pub fn schedule(&mut self) -> Result<(), MetronomeError> {
         let schedule_ahead_interval =
             self.schedule_ahead_interval
