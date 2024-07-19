@@ -4,14 +4,19 @@
 import init, { Metronome as WasmMetronome } from "./pkg/rustick.js";
 import Metronome from "./metronome.js";
 
+function timeSig(numBeats, noteLength) {
+  return `${numBeats}/${noteLength}`;
+}
+
 const runWasm = async() => {
   const wasm = await init().catch(console.error);
   const startBtn = document.getElementById("start");
   const stopBtn = document.getElementById("stop");
-  const timeSigInput = document.getElementById("time-sig");
+  const numBeatsInput = document.getElementById("num-beats");
+  const noteLengthInput = document.getElementById("note-length");
   const tempoInput = document.getElementById("tempo");
   const met = new Metronome(WasmMetronome, {
-    timeSig: timeSigInput.value,
+    timeSig: timeSig(numBeatsInput.value, noteLengthInput.value),
     tempo: tempoInput.value,
     onTick: (cursor) => {
       document.querySelectorAll("#ticker li").forEach((x) => {
@@ -29,7 +34,7 @@ const runWasm = async() => {
   });
   met.showTicker();
   startBtn.addEventListener("click", e => {
-    met.start(timeSigInput.value, tempoInput.value);
+    met.start(timeSig(numBeatsInput.value, noteLengthInput.value), tempoInput.value);
   });
   stopBtn.addEventListener("click", e => met.stop());
 };
