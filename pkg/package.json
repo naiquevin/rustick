@@ -1,0 +1,14 @@
+{
+  "name": "rustick",
+  "version": "0.1.0",
+  "files": [
+    "rustick_bg.wasm",
+    "rustick.js",
+    "rustick.d.ts"
+  ],
+  "module": "rustick.js",
+  "types": "rustick.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

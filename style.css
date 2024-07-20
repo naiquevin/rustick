@@ -1,0 +1,6 @@
+input#tempo { width: 120px; }
+.tickerContainer { margin-top: 30px; height: 60px; }
+ul#ticker { list-style: none; margin: 10px 0; padding: 0; }
+ul#ticker li { width: 20px; height: 20px; border: 1px solid #000; float: left; }
+ul#ticker li.active { background: #000; }
+clear { clear: both; }

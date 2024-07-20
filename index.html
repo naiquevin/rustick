@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Metronome using wasm (rust)</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <section class="section">
+      <h1 class="is-size-1">Rustick</h1>
+      <p>Metronome implemented using Rust (compiled to Wasm) + Javascript</p>
+      <div class="box mt-5">
+        <div id="control-panel">
+          <div class="field">
+            <label class="label">Time Signature:</label>
+            <div class="control">
+              <div class="select">
+                <select id="num-beats">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                </select>
+              </div>
+              <span class="is-size-3 mr-1">/</span>
+              <div class="select">
+                <select id="note-length">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="4" selected>4</option>
+                  <option value="8">8</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Tempo:</label>
+            <div class="control">
+              <input class="input" id="tempo" type="number" value="200"/>
+              <span class="is-size-5 mr-1">BPM</span>
+            </div>
+          </div>
+          <!-- <label>Time signature:</label> <input id="time-sig" type="text" value="4/4" />
+               <label>Tempo:</label> <input id="tempo" type="number" value="200"/> -->
+          <div class="field is-grouped">
+            <div class="control">
+              <button class="button" id="start">Start</button>
+            </div>
+            <div class="control">
+              <button class="button" id="stop">Stop</button>
+            </div>
+          </div>
+        </div>
+        <div class="block tickerContainer">
+          <ul id="ticker"></ul>
+          <div class="clear"/>
+        </div>
+      </div>
+    </section>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
